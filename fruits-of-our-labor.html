@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tevin Medley | Clients</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+    <!-- Removed fruits-of-labor-enhancements.css link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/cosmic-theme.css">
+    <style>
+        /* Styles specific to the Clients page */
+        .clients-hero {
+            background-color: var(--color-moss); /* Or choose a different color */
+            background-image: linear-gradient(
+                to bottom right,
+                rgba(151, 188, 98, 0.85) 0%, /* Adjust colors if needed */
+                rgba(44, 95, 45, 0.85) 100%
+            ), url('Background Images/hannah-montez-05KFkDsxDjk-unsplash.jpg'); /* Choose a suitable background */
+            background-size: cover;
+            background-position: center;
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .clients-hero h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .clients-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .client-logos-section {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--color-sand); /* Or var(--color-white) */
+        }
+
+        .client-logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-lg);
+            align-items: center;
+            justify-items: center;
+            max-width: 1000px; /* Adjust as needed */
+            margin: 0 auto;
+        }
+
+        .client-logo-item {
+            max-width: 100%;
+            height: 60px; /* Adjust height as needed */
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: filter var(--transition-normal), opacity var(--transition-normal);
+        }
+
+        .client-logo-item:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .section-title {
+             margin-bottom: var(--spacing-lg);
+        }
+
+        @media (max-width: 768px) {
+            .client-logos-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: var(--spacing-md);
+            }
+            .client-logo-item {
+                height: 50px; /* Adjust for smaller screens */
+            }
+        }
+         @media (max-width: 480px) {
+            .client-logos-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on smallest screens */
+                gap: var(--spacing-md);
+            }
+             .client-logo-item {
+                height: 40px; /* Adjust for smallest screens */
+            }
+        }
+    </style>
+</head>
+<body class="cosmic-theme">
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Tevin Medley</a>
+                <nav class="main-nav">
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="fruits-of-our-labor.html" class="active">Clients</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="connect.html" class="btn nav-button">Get In Touch</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero clients-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Clients</h1>
+                <p>Proud to have collaborated with these impactful organizations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="client-logos-section fade-in">
+        <div class="container">
+            <h2 class="section-title text-center">Organizations I've Worked With</h2>
+            <div class="client-logos-grid stagger-fade-in">
+                <!-- Placeholder Logos -->
+                <img src="img/clients/placeholder.png" alt="University of Oregon Logo" class="client-logo-item">
+                <img src="img/clients/placeholder.png" alt="University of California Logo" class="client-logo-item">
+                <img src="img/clients/placeholder.png" alt="The Burke Museum Logo" class="client-logo-item">
+                <img src="img/clients/placeholder.png" alt="University of Washington Logo" class="client-logo-item">
+                <img src="img/clients/placeholder.png" alt="WSDA Logo" class="client-logo-item">
+                <img src="img/clients/placeholder.png" alt="City of Olympia Logo" class="client-logo-item">
+                <img src="img/clients/placeholder.png" alt="SafePlace Logo" class="client-logo-item">
+                <img src="img/clients/placeholder.png" alt="WA Dept of Commerce Logo" class="client-logo-item">
+                <img src="img/clients/placeholder.png" alt="WA DOH Logo" class="client-logo-item">
+                <img src="img/clients/placeholder.png" alt="WA DCYF Logo" class="client-logo-item">
+                <img src="img/clients/placeholder.png" alt="WA State Parks Logo" class="client-logo-item">
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Tevin Medley</h2>
+                    <p>Connecting Communities. Creating Opportunities.</p> <!-- Updated tagline -->
+                </div>
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Me</a></li>
+                            <li><a href="projects.html">My Projects</a></li>
+                            <li><a href="fruits-of-our-labor.html">Clients</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="connect.html">Connect</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact</h3>
+                        <!-- Contact info will be updated in connect.html step -->
+                        <p>Email: <a href="mailto:tevin@tevinmedley.com">tevin@tevinmedley.com</a></p>
+                        <!-- Phone removed -->
+                        <p>Seattle, WA</p>
+                    </div>
+                    <div class="footer-social">
+                        <h3>Connect</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <!-- Other social icons removed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tevin Medley. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/enhancements.js"></script>
+    <!-- Removed fruits-of-labor.js script link -->
+</body>
+</html>

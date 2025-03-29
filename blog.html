@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tevin Medley | Blog & News</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/cosmic-theme.css"> <!-- Ensure cosmic theme is linked -->
+    <style>
+        /* Additional styles specific to the Blog page */
+        .blog-hero {
+            background-color: var(--color-sky);
+            background-image: linear-gradient(
+                to bottom right,
+                rgba(131, 162, 180, 0.75) 0%,
+                rgba(58, 125, 140, 0.75) 100%
+            ),
+            url('Background Images/nasa--hI5dX2ObAs-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        
+        .blog-content {
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .blog-container {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: var(--spacing-lg);
+        }
+        
+        .blog-main {
+            width: 100%;
+        }
+        
+        .blog-post {
+            background-color: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .blog-header {
+            width: 100%;
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .blog-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--color-forest);
+            color: var(--color-white);
+            padding: 5px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .blog-post-content {
+            padding: var(--spacing-lg);
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            font-size: 0.9rem;
+            color: var(--color-stone);
+        }
+        
+        .blog-author {
+            display: flex;
+            align-items: center;
+            margin-right: var(--spacing-md);
+        }
+        
+        .blog-author img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .blog-date {
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-date i {
+            margin-right: 5px;
+        }
+        
+        .blog-post-content h2 {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-forest);
+        }
+        
+        .blog-post-content p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+        
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .blog-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: rgba(151, 188, 98, 0.1);
+            color: var(--color-forest);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+        
+        .blog-cta {
+            margin-top: var(--spacing-md);
+        }
+        
+        .blog-sidebar {
+            width: 100%;
+        }
+        
+        .sidebar-section {
+            background-color: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-section h3 {
+            color: var(--color-forest);
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+            padding-bottom: var(--spacing-xs);
+        }
+        
+        .sidebar-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--color-moss);
+        }
+        
+        .newsletter-form {
+            margin-top: var(--spacing-md);
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+        }
+        
+        .recent-posts {
+            list-style: none;
+        }
+        
+        .recent-posts li {
+            margin-bottom: var(--spacing-sm);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .recent-posts li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .recent-posts a {
+            display: flex;
+            align-items: center;
+        }
+        
+        .recent-post-img {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-sm);
+            background-size: cover;
+            background-position: center;
+            margin-right: var(--spacing-sm);
+            flex-shrink: 0;
+        }
+        
+        .recent-post-title {
+            flex-grow: 1;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color var(--transition-fast);
+        }
+        
+        .recent-posts a:hover .recent-post-title {
+            color: var(--color-moss);
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .categories-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            transition: color var(--transition-fast);
+        }
+        
+        .categories-list a:hover {
+            color: var(--color-moss);
+        }
+        
+        .category-count {
+            display: inline-block;
+            background-color: var(--color-sand);
+            color: var(--color-bark);
+            font-size: 0.8rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: var(--spacing-lg);
+        }
+        
+        .pagination-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--color-white);
+            color: var(--color-forest);
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-fast);
+        }
+        
+        .pagination-item:hover,
+        .pagination-item.active {
+            background-color: var(--color-forest);
+            color: var(--color-white);
+        }
+        
+        @media (max-width: 992px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-header {
+                height: 250px;
+            }
+            
+            .blog-sidebar {
+                order: -1;
+                margin-bottom: var(--spacing-lg);
+            }
+        }
+    </style>
+</head>
+<body class="cosmic-theme"> <!-- Add cosmic-theme class -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Tevin Medley</a>
+                <nav class="main-nav">
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="fruits-of-our-labor.html">Clients</a></li>
+                        <li><a href="blog.html" class="active">Blog</a></li>
+                        <li><a href="connect.html" class="btn nav-button">Get In Touch</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero blog-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Blog & News</h1>
+                <p>Thoughts, insights, and updates on organizational transformation, community building, and AI innovation</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-content fade-in">
+        <div class="container">
+            <h2 class="section-title text-center">Featured Articles & Insights</h2>
+            <p class="text-center" style="max-width: 700px; margin: 0 auto var(--spacing-lg);">Sharing perspectives on diversity, equity, community building, and leadership.</p>
+            
+            <div class="blog-main stagger-fade-in" style="max-width: 900px; margin: 0 auto;">
+                <!-- Article Link 1 -->
+                <article class="blog-post" style="display: flex; align-items: center; gap: var(--spacing-md);">
+                    <div class="blog-header" style="flex: 1; height: 150px; background-image: url('Photos for Website/Blog and News/Web 6.JPG'); border-radius: var(--radius-sm);">
+                        <!-- Optional: Add category overlay if desired -->
+                    </div>
+                    <div class="blog-post-content" style="flex: 2; padding: 0;">
+                        <h3>Diversity Wins: How Inclusion Matters</h3>
+                        <p>An exploration of the impact of diversity and inclusion on organizational performance. (Source: McKinsey)</p>
+                        <div class="blog-cta">
+                            <a href="https://www.mckinsey.com/~/media/mckinsey/featured%20insights/diversity%20and%20inclusion/diversity%20wins%20how%20inclusion%20matters/diversity-wins-how-inclusion-matters-vf.pdf" class="btn btn-secondary" target="_blank" rel="noopener">Read Article <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article Link 2 -->
+                 <article class="blog-post" style="display: flex; align-items: center; gap: var(--spacing-md);">
+                    <div class="blog-header" style="flex: 1; height: 150px; background-image: url('Photos for Website/Blog and News/Web 8.JPG'); border-radius: var(--radius-sm);">
+                    </div>
+                    <div class="blog-post-content" style="flex: 2; padding: 0;">
+                        <h3>Getting Serious About Diversity and Inclusion in the Health Care Sector</h3>
+                        <p>Insights on advancing DEI within the healthcare industry. (Source: Harvard Business Review)</p>
+                        <div class="blog-cta">
+                            <a href="https://hbr.org/2020/11/getting-serious-about-diversity-and-inclusion-in-the-health-care-sector" class="btn btn-secondary" target="_blank" rel="noopener">Read Article <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article Link 3 -->
+                 <article class="blog-post" style="display: flex; align-items: center; gap: var(--spacing-md);">
+                    <div class="blog-header" style="flex: 1; height: 150px; background-image: url('Photos for Website/Blog and News/disabledandhere-001-5c956934.jpg'); border-radius: var(--radius-sm);">
+                    </div>
+                    <div class="blog-post-content" style="flex: 2; padding: 0;">
+                        <h3>How Nonprofits Can Build Authentic Community Partnerships</h3>
+                        <p>Strategies for creating meaningful collaborations between nonprofits and the communities they serve. (Source: Forbes)</p>
+                        <div class="blog-cta">
+                            <a href="https://www.forbes.com/sites/forbesnonprofitcouncil/2021/08/17/how-nonprofits-can-build-authentic-community-partnerships/" class="btn btn-secondary" target="_blank" rel="noopener">Read Article <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                 <!-- Article Link 4 -->
+                 <article class="blog-post" style="display: flex; align-items: center; gap: var(--spacing-md);">
+                    <div class="blog-header" style="flex: 1; height: 150px; background-image: url('Photos for Website/Blog and News/Web 7.JPG'); border-radius: var(--radius-sm);">
+                    </div>
+                    <div class="blog-post-content" style="flex: 2; padding: 0;">
+                        <h3>The Power of Community-Centered Leadership</h3>
+                        <p>Exploring leadership models that prioritize community needs and voices. (Source: Stanford Social Innovation Review)</p>
+                        <div class="blog-cta">
+                            <a href="https://ssir.org/articles/entry/the_power_of_community_centered_leadership" class="btn btn-secondary" target="_blank" rel="noopener">Read Article <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+             <!-- Removed Sidebar and Pagination -->
+        </div>
+    </section>
+
+    <section class="cta-banner fade-in">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Share Your Thoughts</h2>
+                <p>Have a topic you'd like me to address in a future blog post? I'd love to hear from you.</p>
+                <a href="connect.html" class="btn btn-light">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Tevin Medley</h2>
+                    <p>Organizational Transformation Strategist, Community Network Builder</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h3>Navigate</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Me</a></li>
+                            <li><a href="projects.html">My Projects</a></li>
+                            <li><a href="fruits-of-our-labor.html">Clients</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="connect.html">Connect</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact</h3>
+                        <p>Email: <a href="mailto:tevin@tevinmedley.com">tevin@tevinmedley.com</a></p>
+                        <p>Phone: <a href="tel:+14253064042">425-306-4042</a></p>
+                    </div>
+                    <div class="footer-social">
+                        <h3>Social</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tevin Medley. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/enhancements.js"></script>
+</body>
+</html>

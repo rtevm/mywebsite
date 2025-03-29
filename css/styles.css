@@ -1,0 +1,844 @@
+/* 
+* Tevin Medley Website
+* A personal website with an earth tone color palette inspired by the Pacific Northwest
+*/
+
+/* ======= Base Styles and Variables ======= */
+:root {
+    /* Earth tone color palette inspired by Pacific Northwest */
+    --color-forest: #2c5f2d;      /* Deep forest green */
+    --color-moss: #97bc62;        /* Soft moss green */
+    --color-bark: #5e503f;        /* Warm brown bark */
+    --color-earth: #a98467;       /* Rich earth brown */
+    --color-sand: #dcc7aa;        /* Light sand/beige */
+    --color-stone: #6d6875;       /* Slate/stone gray */
+    --color-fog: #c9cba3;         /* Misty green-gray */
+    --color-water: #3a7d8c;       /* Deep water blue */
+    --color-sky: #83a2b4;         /* Cloudy sky blue */
+    --color-white: #ffffff;
+    --color-black: #1a1a1a;
+
+    /* Functional Colors (can be overridden by themes) */
+    --text-color: var(--color-black);
+    --background-color: #f9f7f3;
+    --link-color: var(--color-forest);
+    --link-hover-color: var(--color-moss);
+    --heading-color: var(--color-black);
+    --button-primary-bg: var(--color-forest);
+    --button-primary-text: var(--color-white);
+    --button-primary-border: var(--color-forest);
+    --button-secondary-bg: transparent;
+    --button-secondary-text: var(--color-forest);
+    --button-secondary-border: var(--color-forest);
+    --card-bg: var(--color-white);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --footer-bg: var(--color-bark);
+    --footer-text: var(--color-white);
+    --footer-link-color: var(--color-sand);
+    --footer-heading-color: var(--color-moss);
+    
+    /* Fonts */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 5rem;
+    
+    /* Border radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Reset and Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+ul, ol {
+    list-style-position: inside;
+    margin-bottom: var(--spacing-md);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-moss);
+}
+
+/* ======= Buttons ======= */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text);
+    border: 2px solid var(--button-primary-border);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--button-primary-bg); /* Use bg color for text on hover */
+}
+
+.btn-secondary {
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border: 2px solid var(--button-secondary-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--button-secondary-border); /* Use border color for bg on hover */
+    color: var(--button-primary-text); /* Assuming secondary hover text is same as primary button text */
+}
+
+.btn-light {
+    background-color: var(--color-white);
+    color: var(--color-forest);
+    border: 2px solid var(--color-white);
+}
+
+.btn-light:hover {
+    background-color: transparent;
+    color: var(--color-white);
+}
+
+.btn-text {
+    color: var(--color-forest);
+    position: relative;
+    font-weight: 600;
+    transition: color var(--transition-fast);
+}
+
+.btn-text:hover {
+    color: var(--color-moss);
+}
+
+.btn-text i {
+    font-size: 0.8rem;
+    margin-left: 5px;
+    transition: transform var(--transition-fast);
+}
+
+.btn-text:hover i {
+    transform: translateX(5px);
+}
+
+/* ======= Header & Navigation ======= */
+.main-header {
+    position: fixed; /* Or 'relative'/'static' if you don't want it fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #f9f7f3; /* Light beige background like example */
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */ /* Shadow removed */
+    transition: all var(--transition-normal);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--link-color); /* Use link color for logo */
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+}
+
+.nav-links li {
+    margin-left: var(--spacing-sm);
+}
+
+.nav-links a {
+    color: var(--color-bark); /* Darker text color */
+    font-weight: 500;
+    padding: 0.5rem 0; /* Vertical padding only */
+    margin: 0 var(--spacing-sm); /* Horizontal margin for spacing */
+    /* position: relative; */ /* Removed for underline */
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--color-black); /* Darker color for active/hover */
+}
+
+/* Underline effect removed */
+/* .nav-links a::after { ... } */
+
+/* Style for the 'Get In Touch' button in the nav */
+.nav-button {
+    background-color: var(--color-bark); /* Dark background like example */
+    color: var(--color-white); /* Light text */
+    padding: 0.5rem 1rem; /* Adjust padding */
+    border-radius: var(--radius-sm);
+    margin-left: var(--spacing-md); /* Add some space before the button */
+    border: 2px solid var(--color-bark);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-button:hover,
+.nav-button.active { /* Keep active state consistent if needed */
+    background-color: transparent;
+    color: var(--color-bark); /* Text color matches original background */
+    border-color: var(--color-bark);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: var(--text-color); /* Use text color */
+    transition: all var(--transition-fast);
+}
+
+/* ======= Hero Section ======= */
+.hero {
+    padding: calc(var(--spacing-xl) * 2) 0 var(--spacing-xl);
+    background-color: var(--color-fog);
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(201, 203, 163, 0.85) 0%,
+        rgba(151, 188, 98, 0.85) 100%
+    );
+    color: var(--color-black);
+    text-align: center;
+    /* margin-top: 72px; */ /* Adjust or remove if header height changes or isn't fixed */
+    padding-top: calc(var(--spacing-xl) + 72px); /* Add padding to account for fixed header height */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-forest);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+/* ======= Featured Sections ======= */
+.featured-sections {
+    padding: var(--spacing-xl) 0;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.featured-card {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-content {
+    padding: var(--spacing-md);
+}
+
+.card-content h3 {
+    color: var(--color-forest);
+    margin-bottom: var(--spacing-sm);
+}
+
+.card-content p {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-stone);
+}
+
+/* ======= Newsletter Section ======= */
+.newsletter {
+    padding: var(--spacing-lg) 0;
+    background-color: var(--color-sand);
+}
+
+.newsletter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.newsletter-content {
+    flex: 1;
+}
+
+.newsletter-content h2 {
+    color: var(--color-forest);
+}
+
+.newsletter-form {
+    flex: 1;
+    margin-left: var(--spacing-md);
+}
+
+#subscribe-form {
+    display: flex;
+    max-width: 500px;
+    width: 100%;
+}
+
+#subscribe-form input {
+    flex-grow: 1;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    font-family: var(--font-body);
+}
+
+#subscribe-form button {
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* ======= Latest Blog Section ======= */
+.latest-blog {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.view-all {
+    font-weight: 600;
+    color: var(--color-forest);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.blog-card {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: var(--color-white);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform var(--transition-normal);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card .card-image {
+    height: 180px;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.85rem;
+}
+
+.category {
+    color: var(--color-forest);
+    font-weight: 600;
+}
+
+.date {
+    color: var(--color-stone);
+}
+
+/* ======= CTA Banner ======= */
+.cta-banner {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-forest);
+    color: var(--color-white);
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+}
+
+.cta-content p {
+    margin-bottom: var(--spacing-md);
+    opacity: 0.9;
+}
+
+/* ======= Footer ======= */
+.main-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-logo {
+    flex: 0 0 100%;
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-logo h2 {
+    color: var(--footer-text); /* Use footer text color */
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex: 0 0 100%;
+}
+
+.footer-nav, .footer-contact, .footer-social {
+    flex: 1;
+    margin-right: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-social {
+    margin-right: 0;
+}
+
+.footer-links h3 {
+    color: var(--footer-heading-color);
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-nav ul {
+    list-style: none;
+    margin: 0;
+}
+
+.footer-nav li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-nav a, .footer-contact a {
+    color: var(--footer-link-color);
+    transition: color var(--transition-fast);
+}
+
+.footer-nav a:hover, .footer-contact a:hover {
+    color: var(--footer-heading-color); /* Use heading color for hover */
+}
+
+.social-icons {
+    display: flex;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-right: 10px;
+    color: var(--footer-text); /* Use footer text color */
+    transition: all var(--transition-fast);
+}
+
+.social-icon:hover {
+    background-color: var(--footer-heading-color); /* Use heading color for bg */
+    color: var(--footer-bg); /* Use footer bg for text */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ======= Media Queries ======= */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    .hero {
+        padding: calc(var(--spacing-xl) * 1.5) 0 var(--spacing-lg);
+    }
+    
+    .newsletter-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .newsletter-form {
+        margin-left: 0;
+        margin-top: var(--spacing-md);
+        width: 100%;
+    }
+    
+    #subscribe-form {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        flex-direction: column;
+        background-color: var(--color-white);
+        overflow: hidden;
+        transition: height var(--transition-normal);
+        z-index: 999;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-open .nav-links {
+        height: calc(100vh - 72px);
+        overflow-y: auto;
+    }
+    
+    .nav-links li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: var(--spacing-sm);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .view-all {
+        margin-top: var(--spacing-xs);
+    }
+    
+    .footer-links {
+        flex-direction: column;
+    }
+    
+    .footer-nav, .footer-contact, .footer-social {
+        margin-right: 0;
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .featured-grid, .blog-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ======= Game Modal Styles ======= */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1001; /* Above header */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Dim background */
+}
+
+.modal-content {
+    background-color: var(--background-color);
+    margin: 5% auto; /* Centered vertically */
+    padding: var(--spacing-md);
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 900px; /* Adjust max width as needed */
+    border-radius: var(--radius-md);
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--color-black);
+    text-decoration: none;
+}
+
+#gameArea {
+    text-align: center;
+}
+
+#mapContainer {
+    width: 100%;
+    max-width: 700px; /* Adjust as needed */
+    margin: var(--spacing-md) auto;
+    border: 1px solid #ccc; /* Optional border */
+}
+
+#mapContainer svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#mapContainer svg path {
+    fill: var(--color-sand); /* Default country color */
+    stroke: var(--color-bark); /* Country borders */
+    stroke-width: 0.5;
+    cursor: pointer;
+    transition: fill var(--transition-fast);
+}
+
+#mapContainer svg path:hover {
+    fill: var(--color-moss); /* Updated Hover color */
+    opacity: 1; /* Ensure hover is fully opaque */
+}
+
+#mapContainer svg path.correct {
+    fill: var(--color-forest); /* Updated Correct guess color */
+    cursor: default;
+}
+
+#mapContainer svg path.incorrect {
+    fill: var(--color-bark); /* Updated Incorrect guess color */
+    cursor: default;
+}
+
+#mapContainer svg path.completed {
+    fill: var(--color-stone); /* Color for already guessed countries */
+    cursor: default;
+    opacity: 0.7;
+}
+
+#feedbackArea {
+    margin-top: var(--spacing-sm);
+    font-weight: bold;
+    min-height: 1.5em; /* Prevent layout shift */
+}
+
+#animationArea {
+    /* Styles for flag/balloon animations */
+    margin-top: var(--spacing-sm);
+    font-size: 3rem; /* Example size for flag emoji */
+}
+
+/* ======= Game Animations ======= */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}
+
+.shake {
+  animation: shake 0.3s linear;
+}
