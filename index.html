@@ -3,219 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tevin Medley | Home</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/enhancements.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Tevin Medley | Strategist & Builder</title>
+    
+    <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/cosmic-theme.css"> <!-- Ensure cosmic theme is linked -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
 </head>
-<body class="cosmic-theme"> <!-- Add cosmic-theme class -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">Tevin Medley</a>
-                <nav class="main-nav">
-                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </button>
-                    <ul class="nav-links">
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="fruits-of-our-labor.html">Clients</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="connect.html" class="btn nav-button">Get In Touch</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<body class="page-home">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="hero-immersive">
-        <div class="hero-background" style="background-image: url('Background Images/greg-rakozy-oMpAz-DN-9I-unsplash.jpg');"></div>
-        <div class="hero-content-wrapper">
-            <span class="personalized-greeting">Hello</span>
-            <h1>Community <span>Builder</span>. Strategist. <span>Innovator</span>.</h1>
-            <p>Guiding organizations through transformational change with a focus on equity, inclusion, and sustainable impact.</p>
-            <div class="hero-buttons">
-                <a href="about.html" class="btn btn-primary">Learn More</a>
-                <button id="startGameBtn" class="btn btn-primary">Play Africa Geography Game</button> <!-- Game Trigger Button -->
-                <a href="connect.html" class="btn btn-secondary">Get In Touch</a>
-            </div>
-        </div>
-        <a href="#featured-sections" class="scroll-indicator"><i class="fas fa-chevron-down"></i></a>
-    </section>
-
-    <!-- Game Modal Structure -->
-    <div id="gameModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Africa Geography Quiz</h2>
-            <div id="gameArea">
-                <p>Click on: <strong id="targetCountryName"></strong></p>
-                <div id="mapContainer">
-                    <!-- SVG will be loaded here by JavaScript -->
-                </div>
-                <p id="feedbackArea"></p>
-                <div id="animationArea"></div> <!-- For flag/balloons -->
-            </div>
+    <div class="hero" data-image="img/nasa-Yj1M5riCKk4-unsplash.jpg">
+        <div class="hero-text">
+            <h1>Tevin Medley</h1>
+            <h2>Organizational Transformation Strategist, Community Network Builder</h2>
         </div>
     </div>
-
-    <section id="featured-sections" class="featured-sections">
-        <div class="container">
-            <h2 class="section-title">Explore</h2>
-            <div class="featured-grid stagger-fade-in">
-                <div class="featured-card">
-                    <div class="card-image">
-                        <img src="Photos for Website/About Me/Headshot.jpeg" alt="Tevin Medley headshot" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3>About Me</h3>
-                        <p>Learn about my journey, background, and what drives my passion for community-building and equity work.</p>
-                        <a href="about.html" class="btn-text">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="featured-card">
-                    <div class="card-image">
-                        <img src="Photos for Website/My Projects/A group of co-workers of varying genders having a meeting.jpg" alt="Diverse group of colleagues collaborating around a table" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3>My Projects</h3>
-                        <p>Explore my work in equity-focused strategic planning, leadership coaching, and community engagement.</p>
-                        <a href="projects.html" class="btn-text">View Projects <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="featured-card">
-                    <div class="card-image">
-                        <img src="Photos for Website/Fruits of Our Labor/Web 1.JPG" alt="Selection of fresh fruits and vegetables" loading="lazy">
-                    </div>
-                    <div class="card-content">
-                        <h3>Fruits of our Labor</h3>
-                        <p>Discover Black-owned and focused organizations in Washington State and upcoming events.</p>
-                        <a href="fruits-of-our-labor.html" class="btn-text">Explore <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section Removed -->
-
-    <section class="latest-blog fade-in">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Latest Blog Posts</h2>
-                <a href="blog.html" class="view-all">View All Posts <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="blog-grid stagger-fade-in">
-                <div class="blog-card">
-                    <div class="card-image" style="background-image: url('Photos for Website/Blog and News/On a video call - Dana Chan for Disabled And Here.png')"></div>
-                    <div class="card-content">
-                        <div class="card-meta">
-                            <span class="category">AI Insights</span>
-                            <span class="date">March 15, 2025</span>
-                        </div>
-                        <h3>The Future of AI in Community Building</h3>
-                        <p>Exploring how artificial intelligence can strengthen communities and foster equity...</p>
-                        <a href="blog.html" class="btn-text">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="card-image" style="background-image: url('Photos for Website/Blog and News/Web 7.JPG')"></div>
-                    <div class="card-content">
-                        <div class="card-meta">
-                            <span class="category">Strategic Insights</span>
-                            <span class="date">March 8, 2025</span>
-                        </div>
-                        <h3>Transformational Leadership in Changing Times</h3>
-                        <p>Key strategies for effective leadership during periods of organizational change...</p>
-                        <a href="blog.html" class="btn-text">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="card-image" style="background-image: url('Photos for Website/Blog and News/disabledandhere-001-5c956934.jpg')"></div>
-                    <div class="card-content">
-                        <div class="card-meta">
-                            <span class="category">Community</span>
-                            <span class="date">March 1, 2025</span>
-                        </div>
-                        <h3>Building Resilient Community Networks</h3>
-                        <p>Lessons learned from successful community engagement initiatives across Washington State...</p>
-                        <a href="blog.html" class="btn-text">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-banner fade-in">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to collaborate?</h2>
-                <p>Let's work together to create sustainable, equitable change in your organization or community.</p>
-                <a href="connect.html" class="btn btn-light">Get in Touch</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Tevin Medley</h2>
-                    <p>Organizational Transformation Strategist, Community Network Builder</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-nav">
-                        <h3>Navigate</h3>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Me</a></li>
-                            <li><a href="projects.html">My Projects</a></li>
-                            <li><a href="fruits-of-our-labor.html">Clients</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="connect.html">Connect</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-contact">
-                        <h3>Contact</h3>
-                        <p>Email: <a href="mailto:tevin@tevinmedley.com">tevin@tevinmedley.com</a></p>
-                        <p>Phone: <a href="tel:+14253064042">425-306-4042</a></p>
-                    </div>
-                    <div class="footer-social">
-                        <h3>Social</h3>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Tevin Medley. All rights reserved.</p>
-            </div>
-        </div>
+<main>
+    <div class="container fade-in-section"> <!-- Wrap main content and apply animation class -->
+        <p>Tevin Medley (he/him), an Organizational Transformation Strategist and Community Network Builder, specializes in creating conditions for change by guiding individuals and teams to think boldly about their desired future, and then helping construct the strategic scaffolding required to get there. With over 12 years of experience across nonprofit, government, and corporate sectors, Tevin integrates strategic planning, inclusive facilitation, leadership coaching, and community engagement to foster belonging, build capacity, and drive equity-driven outcomes.</p>
+        <p><a href="about.html">Learn more about Tevin</a></p>
+    </div>
+</main>
+    <footer class="fade-in-section"> <!-- Apply animation class to footer -->
+        <p>&copy; 2025 Tevin Medley. All rights reserved.</p>
     </footer>
 
-    <!-- Recently Viewed Section -->
-    <section class="recently-viewed fade-in" style="padding: var(--spacing-xl) 0; background-color: var(--color-sand);">
-        <div class="container">
-            <h2 class="section-title">Recently Viewed</h2>
-            <div class="recently-viewed-content">
-                <p>Your recently viewed items will appear here as you explore the site.</p>
-            </div>
-        </div>
-    </section>
-
-    <script src="js/script.js"></script>
-    <script src="js/enhancements.js"></script>
-    <script src="js/game.js"></script> <!-- Link Game JavaScript -->
+    <script src="js/script.js" defer></script> <!-- Defer script loading -->
 </body>
 </html>

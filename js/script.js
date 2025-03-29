@@ -1,125 +1,150 @@
-/**
- * Main JavaScript for Tevin Medley's personal website
- */
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation Menu Toggle
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const body = document.body;
-    const navLinks = document.querySelector('.nav-links'); // Get nav element
+document.addEventListener('DOMContentLoaded', () => {
+    // --- SCROLL ANIMATIONS ---
+    initScrollAnimations();
     
-    if (mobileMenuToggle) {
-        // Set initial ARIA state
-        const isNavOpen = body.classList.contains('nav-open');
-        mobileMenuToggle.setAttribute('aria-expanded', isNavOpen.toString());
-
-        mobileMenuToggle.addEventListener('click', function() {
-            const currentlyOpen = body.classList.toggle('nav-open');
-            this.setAttribute('aria-expanded', currentlyOpen.toString()); // Toggle aria-expanded
-            
-            // Change the appearance of the toggle button when menu is open
-            const bars = this.querySelectorAll('.bar');
-            bars.forEach(bar => bar.classList.toggle('active'));
-        });
-    }
+    // --- PARALLAX EFFECT ---
+    initParallaxEffect();
     
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (body.classList.contains('nav-open') && 
-            !event.target.closest('.main-nav') && 
-            !event.target.closest('.mobile-menu-toggle')) {
-            body.classList.remove('nav-open');
-            
-            // Reset the appearance of the toggle button and ARIA state
-            const bars = document.querySelectorAll('.mobile-menu-toggle .bar');
-            bars.forEach(bar => bar.classList.remove('active'));
-            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    // --- THEME TOGGLE ---
+    initThemeToggle();
+
+    // --- ACTIVE NAVIGATION LINK ---
+    initActiveNav();
+});
+
+// Set active state for navigation link based on current page
+function initActiveNav() {
+    const currentPagePath = window.location.pathname;
+    const navLinks = document.querySelectorAll('header nav ul li a');
+
+    navLinks.forEach(link => {
+        // Get the path part of the link's href
+        const linkPath = new URL(link.href).pathname;
+
+        // Check if the link's path matches the current page path
+        // For index.html, check for both '/' and '/index.html'
+        if (linkPath === currentPagePath || (linkPath === '/index.html' && currentPagePath === '/')) {
+            link.classList.add('active'); // Add active class for styling
+            link.setAttribute('aria-current', 'page'); // Set ARIA attribute
+        } else {
+            link.classList.remove('active');
+            link.removeAttribute('aria-current');
         }
     });
+}
+
+// Initialize fade-in sections on scroll
+function initScrollAnimations() {
+    const observerOptions = {
+        root: null, // Use the viewport as the root
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    };
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Stop observing once visible
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    const elementsToAnimate = document.querySelectorAll('.fade-in-section');
+    elementsToAnimate.forEach(el => observer.observe(el));
+}
+
+// Set up parallax hero image
+function initParallaxEffect() {
+    const heroElement = document.querySelector('.hero');
     
-    // Newsletter subscription form REMOVED
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId !== '#') {
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
+    if (heroElement) {
+        const imageUrl = heroElement.getAttribute('data-image');
+        if (imageUrl) {
+            heroElement.style.backgroundImage = `url('${imageUrl}')`;
+        }
+        
+        // Optional: Enhanced parallax effect on scroll (throttled)
+        let isThrottled = false;
+        const throttleDelay = 10; // Milliseconds to wait between updates
+
+        window.addEventListener('scroll', () => {
+            if (isThrottled) {
+                return; // Skip execution if already throttled
+            }
+            isThrottled = true;
+
+            setTimeout(() => {
+                const scrollPosition = window.pageYOffset;
+                // Check if element is roughly in viewport before calculating
+                const rect = heroElement.getBoundingClientRect();
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    // Move the background image at a different rate than the scroll
+                    const yPos = -(scrollPosition * 0.3);
+                    // Use requestAnimationFrame for smoother updates
+                    window.requestAnimationFrame(() => {
+                         heroElement.style.backgroundPositionY = `${yPos}px`;
                     });
-                    
-                    // Close mobile menu if it's open
-                    if (body.classList.contains('nav-open')) {
-                        body.classList.remove('nav-open');
-                        const bars = document.querySelectorAll('.mobile-menu-toggle .bar');
-                        bars.forEach(bar => bar.classList.remove('active'));
-                    }
                 }
-            }
-        });
-    });
-    
-    // Header scroll effect
-    const header = document.querySelector('.main-header');
-    let lastScrollTop = 0;
-    
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        
-        // Hide header when scrolling down, show when scrolling up
-        if (scrollTop > lastScrollTop && scrollTop > 200) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
-    
-    // Add CSS styles for the active menu items
-    function setActiveMenuItem() {
-        const currentPath = window.location.pathname;
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            const linkPath = link.getAttribute('href');
-            if (currentPath.endsWith(linkPath) || 
-                (linkPath === 'index.html' && (currentPath === '/' || currentPath.endsWith('/')))) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
+                isThrottled = false; // Reset throttle flag
+            }, throttleDelay);
         });
     }
+}
+// Set up theme toggle functionality
+function initThemeToggle() {
+    // Create the theme toggle button
+    const nav = document.querySelector('header nav ul');
+    if (!nav) return;
     
-    setActiveMenuItem();
-});
+    const themeToggleItem = document.createElement('li');
+    themeToggleItem.classList.add('theme-toggle-container');
+    
+    const themeToggle = document.createElement('button');
+    themeToggle.id = 'theme-toggle';
+    themeToggle.innerHTML = '🌙'; // Default icon for dark mode
+    themeToggle.setAttribute('aria-label', 'Toggle light/dark theme');
+    themeToggle.title = 'Toggle light/dark theme';
+    
+    themeToggleItem.appendChild(themeToggle);
+    nav.appendChild(themeToggleItem);
+    
+    // Check for saved theme preference or respect OS preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Set initial theme based on saved preference or OS preference
+    let currentTheme = 'dark'; // Default to dark
 
-// Add styles for the mobile menu toggle button when it's active
-document.addEventListener('DOMContentLoaded', function() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .mobile-menu-toggle .bar.active:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
+    if (savedTheme) {
+        // Use saved theme if it exists
+        currentTheme = savedTheme;
+    } else if (!prefersDarkScheme.matches) {
+        // If no saved theme, and OS prefers light, use light
+        currentTheme = 'light';
+    }
+    // Otherwise, the default 'dark' is used (no saved theme, OS prefers dark)
+
+    if (currentTheme === 'light') {
+        document.body.setAttribute('data-theme', 'light');
+        themeToggle.innerHTML = '☀️';
+    } else {
+        document.body.removeAttribute('data-theme'); // Ensure dark theme attribute is removed
+        themeToggle.innerHTML = '🌙';
+    }
+    
+    // Toggle theme when button is clicked
+    themeToggle.addEventListener('click', () => {
+        if (document.body.getAttribute('data-theme') === 'light') {
+            document.body.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+            themeToggle.innerHTML = '🌙';
+        } else {
+            document.body.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            themeToggle.innerHTML = '☀️';
         }
-        .mobile-menu-toggle .bar.active:nth-child(2) {
-            opacity: 0;
-        }
-        .mobile-menu-toggle .bar.active:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-        .main-header.scrolled {
-            padding: 5px 0;
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-    `;
-    document.head.appendChild(style);
-});
+    });
+}
