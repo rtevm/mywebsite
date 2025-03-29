@@ -1,0 +1,7 @@
+# Sensitive / Draft Content
+website_content.md
+WEBSITE 2.0/
+
+# macOS system files
+.DS_Store
+*/.DS_Store
