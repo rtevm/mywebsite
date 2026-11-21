@@ -15,11 +15,6 @@ Visitors can move the sun across the sky (the scene shifts from midday to golden
 to launch sailboats, and watch dolphins leap. The sun starts where it sits in the visitor's own day.
 Sound is off until the visitor presses the sound button.
 
-## Previous site
-
-`previous-site/` holds the earlier multi-page site (home, about, services, projects, contact, with
-its styles, script and images) so its copy and photos are on hand for the rebuild. Nothing links to it.
-
 ## Setup
 
 1. Clone the repository
@@ -27,8 +22,8 @@ its styles, script and images) so its copy and photos are on hand for the rebuil
 
 ## Deployment
 
-The site deploys automatically via GitHub Pages when changes reach the `main` branch, using
-`.github/workflows/deploy.yml`.
+GitHub Pages publishes the `main` branch automatically (Settings → Pages → Branch: `main`).
+Merging a change into `main` updates the live site within a minute or so.
 
 ## Contact
 
