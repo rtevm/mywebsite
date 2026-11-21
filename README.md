@@ -1,42 +1,35 @@
 # Tevin Medley's Personal Website
 
-Code for the personal and professional website of Tevin Medley, an Organizational Transformation Strategist and Community Network Builder, deployed via GitHub Pages.
+Code for [tevinmedley.com](https://tevinmedley.com), deployed via GitHub Pages.
 
-## About
+## What is live now
 
-This website showcases Tevin's professional background, services offered, and current projects. It features a clean, minimalist design with subtle animations and a focus on content clarity.
+A single coming-soon page while the full site is rebuilt.
 
-## Structure
+- `index.html` - the whole page in one file: styles, markup and script. No build step and no server.
+  The only outside request is the headline typeface from Google Fonts.
+- `404.html` - sends any old page address (about, services, projects, contact) to the home page.
+- `CNAME` - the custom domain.
 
-- `index.html` - Homepage with introduction
-- `about.html` - Detailed professional background
-- `services.html` - Services offered
-- `projects.html` - Portfolio of current and past projects
-- `contact.html` - Contact information and form
-- `css/` - Stylesheet directory
-  - `style.css` - Main stylesheet
-  - `enhancements.css` - Additional styling and animations
-- `js/` - JavaScript directory
-  - `script.js` - Client-side functionality
-- `img/` - Image assets
+Visitors can move the sun across the sky (the scene shifts from midday to golden hour), tap the sea
+to launch sailboats, and watch dolphins leap. The sun starts where it sits in the visitor's own day.
+Sound is off until the visitor presses the sound button.
+
+## Previous site
+
+`previous-site/` holds the earlier multi-page site (home, about, services, projects, contact, with
+its styles, script and images) so its copy and photos are on hand for the rebuild. Nothing links to it.
 
 ## Setup
 
 1. Clone the repository
-2. Open any HTML file in a web browser to view locally
-3. For development, any standard web server can be used
+2. Open `index.html` in a web browser to view it locally
 
 ## Deployment
 
-This site is automatically deployed via GitHub Pages using the workflow defined in `.github/workflows/deploy.yml`.
-
-## Technologies
-
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- GitHub Pages for hosting
+The site deploys automatically via GitHub Pages when changes reach the `main` branch, using
+`.github/workflows/deploy.yml`.
 
 ## Contact
 
-For inquiries, please contact Tevin at tevin@tevinmedley.com or connect on [LinkedIn](https://www.linkedin.com/in/rtevinm/).
+Tevin Medley: tevin@tevinmedley.com or [LinkedIn](https://www.linkedin.com/in/rtevinm/).
